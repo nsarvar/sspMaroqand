@@ -4,8 +4,6 @@
 
 Refer to task-1.pdf for the task
 
-Solution:
-
 This program is created in python on Linux OS
 
 Run the command: `python task1.py filepath`. For example: `python task1.py data.txt`
