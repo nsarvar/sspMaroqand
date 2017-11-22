@@ -2,8 +2,7 @@
 import sys
 import collections
 
-i=1;
-trans = collections.defaultdict(list)
+transactions = collections.defaultdict(list)
 query = []
 prefix = {
 	'Uzmobile':['99','95'],
@@ -12,28 +11,32 @@ prefix = {
 	'UMS': ['97'],
 	'Perfectum': ['98']
 }
+i=1 # line counter
 
+## function to identify the company name according to the prefix
 def getCompanyName(prfx):
 	for val in prefix:
 		if prfx in prefix[val]: return val
 
-## parsing the text from file
+## parsing the text from file and storing into the list - transactions
 with open("data.txt") as file:
 	for line in file:
-		if (i == 1) : n = int(line.strip())
-		if (i == 2) : k = int(line.strip())
+		if (i == 1) : n = int(line.strip())	# number of transactions
+		if (i == 2) : k = int(line.strip())	# number of queries
 		if (i>2 and i <= n+2): 
 	 		transId, clientId, accountNo, amount, transDate, transTime = line.split('\t')
-			trans[clientId, accountNo].append(accountNo)
+			transactions[clientId, accountNo].append(accountNo)
 
-		if (i > n+2):
+		if (i > n+2 and i<=n+k+2):
 			query.append(line.strip())
 
 		i +=1
 
 data = {}
 j = 0
-for (clientId, accountNo), vals in sorted(trans.items()):
+
+## sorting and grouping the transactions list by clientID and accountNumber
+for (clientId, accountNo), vals in sorted(transactions.items()):
 	if(j != clientId):
 		data[clientId]=[clientId, accountNo, len(vals)];
 		j = clientId
