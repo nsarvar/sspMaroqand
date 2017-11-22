@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 import sys
 import collections
+import os
 
 transactions = collections.defaultdict(list)
 query = []
+filename=sys.argv[-1]
+
 prefix = {
 	'Uzmobile':['99','95'],
 	'Ucell':['93','94'],
@@ -13,13 +16,19 @@ prefix = {
 }
 i=1 # line counter
 
+
 ## function to identify the company name according to the prefix
 def getCompanyName(prfx):
 	for val in prefix:
 		if prfx in prefix[val]: return val
 
+## check if data file exists
+if not os.path.exists(filename):
+	print("file not found")
+	sys.exit(0)
+
 ## parsing the text from file and storing into the list - transactions
-with open("data.txt") as file:
+with open(filename) as file:
 	for line in file:
 		if (i == 1) : n = int(line.strip())	# number of transactions
 		if (i == 2) : k = int(line.strip())	# number of queries
