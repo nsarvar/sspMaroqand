@@ -6,8 +6,11 @@ Refer to task-1.pdf for the task
 
 Solution:
 
-`data.txt` must be in the same folder with task1.py
-Run the linux command: `python task1.py`
+The program is created using python on Linux OS
+
+`data.txt` must be in the same folder with `task1.py`
+
+Run the command: `python task1.py`
 
 
 ## Task 2
