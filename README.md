@@ -1,4 +1,4 @@
-# Solutions for the tasks (SSP Maroqand)
+# Solutions for tasks (SSP Maroqand)
 
 ## Task 1
 
